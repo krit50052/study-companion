@@ -76,3 +76,67 @@ export async function deleteDeck(id: string): Promise<void> {
   await supabase.from('decks').delete().eq('id', id)
   revalidatePath('/flashcards')
 }
+
+function parseCardForm(formData: FormData) {
+  const front = (formData.get('front') as string)?.trim()
+  const back = (formData.get('back') as string)?.trim()
+  return { front, back }
+}
+
+export async function createCard(
+  deckId: string,
+  _prevState: FlashcardActionState,
+  formData: FormData
+): Promise<FlashcardActionState> {
+  const { front, back } = parseCardForm(formData)
+
+  if (!front || !back) {
+    return { error: 'Front and back are required' }
+  }
+
+  const supabase = await createClient()
+  const { error } = await supabase.from('cards').insert({
+    deck_id: deckId,
+    front,
+    back,
+  })
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  revalidatePath(`/flashcards/${deckId}`)
+  return {}
+}
+
+export async function updateCard(
+  id: string,
+  deckId: string,
+  _prevState: FlashcardActionState,
+  formData: FormData
+): Promise<FlashcardActionState> {
+  const { front, back } = parseCardForm(formData)
+
+  if (!front || !back) {
+    return { error: 'Front and back are required' }
+  }
+
+  const supabase = await createClient()
+  const { error } = await supabase
+    .from('cards')
+    .update({ front, back })
+    .eq('id', id)
+
+  if (error) {
+    return { error: error.message }
+  }
+
+  revalidatePath(`/flashcards/${deckId}`)
+  return {}
+}
+
+export async function deleteCard(id: string, deckId: string): Promise<void> {
+  const supabase = await createClient()
+  await supabase.from('cards').delete().eq('id', id)
+  revalidatePath(`/flashcards/${deckId}`)
+}
