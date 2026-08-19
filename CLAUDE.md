@@ -454,6 +454,5 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
 ## Not yet built
-- Flashcard components (DeckList, CardForm, ReviewCard)
 - Dashboard components (ProgressChart, StreakCounter)
 - Seed data for testing
