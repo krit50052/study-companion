@@ -2,6 +2,8 @@
 
 import { createClient } from '@/lib/supabase/server'
 import { revalidatePath } from 'next/cache'
+import { calculateNextReview } from '@/lib/spaced-repetition'
+import type { Card, ReviewQuality } from '@/lib/types'
 
 export interface FlashcardActionState {
   error?: string
@@ -139,4 +141,40 @@ export async function deleteCard(id: string, deckId: string): Promise<void> {
   const supabase = await createClient()
   await supabase.from('cards').delete().eq('id', id)
   revalidatePath(`/flashcards/${deckId}`)
+}
+
+export async function gradeCard(
+  card: Pick<Card, 'id' | 'ease_factor' | 'interval_days' | 'repetitions'>,
+  deckId: string,
+  quality: ReviewQuality
+): Promise<void> {
+  const result = calculateNextReview(card, quality)
+
+  const supabase = await createClient()
+  const {
+    data: { user },
+  } = await supabase.auth.getUser()
+
+  if (!user) {
+    return
+  }
+
+  await supabase
+    .from('cards')
+    .update({
+      ease_factor: result.ease_factor,
+      interval_days: result.interval_days,
+      repetitions: result.repetitions,
+      next_review_date: result.next_review_date,
+    })
+    .eq('id', card.id)
+
+  await supabase.from('review_logs').insert({
+    card_id: card.id,
+    user_id: user.id,
+    quality,
+  })
+
+  revalidatePath(`/flashcards/${deckId}`)
+  revalidatePath('/flashcards')
 }
