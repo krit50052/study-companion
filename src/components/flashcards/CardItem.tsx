@@ -26,7 +26,11 @@ export function CardItem({ card, deckId }: { card: Card; deckId: string }) {
         <p className="font-medium text-gray-900">{card.front}</p>
         <p className="mt-1 text-sm text-gray-600">{card.back}</p>
         <p className="mt-1 text-xs text-gray-400">
-          Next review {new Date(card.next_review_date).toLocaleDateString()}
+          Next review{' '}
+          {(() => {
+            const [year, month, day] = card.next_review_date.split('-')
+            return `${month}/${day}/${year}`
+          })()}
         </p>
       </div>
       <div className="flex shrink-0 gap-2">
