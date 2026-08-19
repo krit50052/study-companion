@@ -1,10 +1,19 @@
-export default function TasksPage() {
+import { createClient } from '@/lib/supabase/server'
+import { TaskList } from '@/components/tasks/TaskList'
+
+export default async function TasksPage() {
+  const supabase = await createClient()
+  const { data: tasks } = await supabase
+    .from('tasks')
+    .select('*')
+    .order('created_at', { ascending: false })
+
   return (
     <div>
       <h1 className="text-2xl font-semibold text-gray-900">Tasks</h1>
-      <p className="mt-2 text-sm text-gray-500">
-        Task tracker coming in Phase 2.
-      </p>
+      <div className="mt-6">
+        <TaskList tasks={tasks ?? []} />
+      </div>
     </div>
   )
 }

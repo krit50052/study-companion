@@ -454,8 +454,6 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
 ## Not yet built
-- Signup page (mirror of login page, use `signup` action)
-- Task Tracker components (TaskList, TaskForm, TaskCard)
 - Flashcard components (DeckList, CardForm, ReviewCard)
 - Dashboard components (ProgressChart, StreakCounter)
 - Seed data for testing
