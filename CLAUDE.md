@@ -11,6 +11,7 @@ Portfolio-scale web app for students combining:
 - **Backend/DB/Auth:** Supabase (Postgres + Auth + RLS)
 - **Charts:** recharts
 - **Dates:** date-fns
+- **Testing:** Vitest (unit tests for pure logic only)
 
 ## Roadmap
 1. **Phase 1 — Foundation:** Next.js + Tailwind + Supabase setup, Auth, base layout
@@ -37,6 +38,7 @@ study-companion/
 │   ├── lib/
 │   │   ├── supabase/{client.ts,server.ts}
 │   │   ├── auth/actions.ts
+│   │   ├── dashboard/queries.ts
 │   │   ├── spaced-repetition.ts
 │   │   └── types.ts
 │   ├── hooks/{useTasks.ts,useDecks.ts,useUser.ts}
@@ -449,6 +451,11 @@ cd study-companion
 npm install @supabase/supabase-js @supabase/ssr recharts date-fns
 ```
 
+## Running Tests
+```bash
+npm run test
+```
+
 ## .env.local (fill from Supabase Dashboard → Project Settings → API)
 ```
 NEXT_PUBLIC_SUPABASE_URL=
@@ -456,5 +463,4 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
 ## Not yet built
-- Dashboard components (ProgressChart, StreakCounter)
 - Seed data for testing
