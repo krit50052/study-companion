@@ -46,6 +46,7 @@ export async function createTask(
     priority,
     status,
     due_date,
+    completed_at: status === 'done' ? new Date().toISOString() : null,
   })
 
   if (error) {
@@ -68,6 +69,20 @@ export async function updateTask(
   }
 
   const supabase = await createClient()
+
+  const { data: existing } = await supabase
+    .from('tasks')
+    .select('status, completed_at')
+    .eq('id', id)
+    .single()
+
+  let completed_at = existing?.completed_at ?? null
+  if (status === 'done' && existing?.status !== 'done') {
+    completed_at = new Date().toISOString()
+  } else if (status !== 'done') {
+    completed_at = null
+  }
+
   const { error } = await supabase
     .from('tasks')
     .update({
@@ -77,6 +92,7 @@ export async function updateTask(
       priority,
       status,
       due_date,
+      completed_at,
       updated_at: new Date().toISOString(),
     })
     .eq('id', id)
