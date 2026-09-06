@@ -1,5 +1,10 @@
 -- Study Companion — Database Schema + RLS Policies
 -- Run this in Supabase Dashboard → SQL Editor → New query → Run
+--
+-- If you already have this schema applied and are adding Phase 4
+-- (dashboard), run this against your existing database instead of the
+-- full script below:
+--   alter table tasks add column completed_at timestamptz;
 
 -- ============================================================
 -- Tables
@@ -14,6 +19,7 @@ create table tasks (
   priority text check (priority in ('low', 'medium', 'high')) default 'medium',
   status text check (status in ('todo', 'doing', 'done')) default 'todo',
   due_date timestamptz,
+  completed_at timestamptz,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );

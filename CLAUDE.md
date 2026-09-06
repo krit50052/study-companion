@@ -56,6 +56,7 @@ create table tasks (
   priority text check (priority in ('low', 'medium', 'high')) default 'medium',
   status text check (status in ('todo', 'doing', 'done')) default 'todo',
   due_date timestamptz,
+  completed_at timestamptz,
   created_at timestamptz default now(),
   updated_at timestamptz default now()
 );
@@ -144,6 +145,7 @@ export interface Task {
   priority: TaskPriority
   status: TaskStatus
   due_date: string | null
+  completed_at: string | null
   created_at: string
   updated_at: string
 }
