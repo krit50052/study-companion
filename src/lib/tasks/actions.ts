@@ -70,11 +70,15 @@ export async function updateTask(
 
   const supabase = await createClient()
 
-  const { data: existing } = await supabase
+  const { data: existing, error: selectError } = await supabase
     .from('tasks')
     .select('status, completed_at')
     .eq('id', id)
     .single()
+
+  if (selectError) {
+    return { error: 'Task not found' }
+  }
 
   let completed_at = existing?.completed_at ?? null
   if (status === 'done' && existing?.status !== 'done') {
