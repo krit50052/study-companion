@@ -8,11 +8,11 @@ export default function DashboardError({
   reset: () => void
 }) {
   return (
-    <div className="flex flex-col items-center gap-4 rounded-lg border border-gray-200 bg-white p-8 text-center">
-      <h1 className="text-lg font-semibold text-gray-900">
+    <div className="flex flex-col items-center gap-4 rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-900">
+      <h1 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
         Something went wrong
       </h1>
-      <p className="text-sm text-gray-500">
+      <p className="text-sm text-gray-500 dark:text-gray-400">
         {error.message || 'An unexpected error occurred while loading this page.'}
       </p>
       <button

@@ -30,7 +30,7 @@ export default async function ReviewPage({
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900">Reviewing {deck.name}</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Reviewing {deck.name}</h1>
       <div className="mt-6">
         <ReviewSession cards={dueCards} deckId={deckId} />
       </div>

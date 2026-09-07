@@ -40,10 +40,10 @@ export function DeckForm({ mode, deck, onDone }: DeckFormProps) {
     <form
       ref={formRef}
       action={formAction}
-      className="space-y-3 rounded-lg border border-gray-200 bg-white p-4"
+      className="space-y-3 rounded-lg border border-gray-200 bg-white p-4 dark:border-gray-700 dark:bg-gray-900"
     >
       {state.error && (
-        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-600">{state.error}</p>
+        <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-600 dark:bg-red-950 dark:text-red-400">{state.error}</p>
       )}
       <div className="grid gap-3 sm:grid-cols-2">
         <input
@@ -51,13 +51,13 @@ export function DeckForm({ mode, deck, onDone }: DeckFormProps) {
           placeholder="Deck name"
           required
           defaultValue={deck?.name}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:col-span-2"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 sm:col-span-2"
         />
         <input
           name="subject"
           placeholder="Subject"
           defaultValue={deck?.subject ?? ''}
-          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:col-span-2"
+          className="rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 sm:col-span-2"
         />
       </div>
       <div className="flex justify-end gap-2">
@@ -65,7 +65,7 @@ export function DeckForm({ mode, deck, onDone }: DeckFormProps) {
           <button
             type="button"
             onClick={onDone}
-            className="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-800"
+            className="rounded-md px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-100"
           >
             Cancel
           </button>

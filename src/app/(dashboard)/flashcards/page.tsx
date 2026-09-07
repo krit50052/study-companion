@@ -27,7 +27,7 @@ export default async function FlashcardsPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900">Flashcards</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Flashcards</h1>
       <div className="mt-6">
         <DeckList decks={decksWithStats} />
       </div>

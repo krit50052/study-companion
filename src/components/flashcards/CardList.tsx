@@ -10,7 +10,7 @@ export function CardList({ cards, deckId }: { cards: Card[]; deckId: string }) {
       <CardForm mode="create" deckId={deckId} />
 
       {cards.length === 0 ? (
-        <p className="text-sm text-gray-500">No cards yet. Add one above.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">No cards yet. Add one above.</p>
       ) : (
         <div className="space-y-3">
           {cards.map((card) => (

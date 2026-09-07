@@ -38,7 +38,7 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value as StatusFilter)}
-          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
         >
           <option value="all">All statuses</option>
           <option value="todo">To do</option>
@@ -48,7 +48,7 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
         <select
           value={priorityFilter}
           onChange={(e) => setPriorityFilter(e.target.value as PriorityFilter)}
-          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
         >
           <option value="all">All priorities</option>
           <option value="low">Low</option>
@@ -58,7 +58,7 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
         <select
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value as SortOrder)}
-          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm"
+          className="rounded-md border border-gray-300 px-3 py-1.5 text-sm dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100"
         >
           <option value="due_asc">Due date ↑</option>
           <option value="due_desc">Due date ↓</option>
@@ -66,7 +66,7 @@ export function TaskList({ tasks }: { tasks: Task[] }) {
       </div>
 
       {visibleTasks.length === 0 ? (
-        <p className="text-sm text-gray-500">No tasks match these filters.</p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">No tasks match these filters.</p>
       ) : (
         <div className="space-y-3">
           {visibleTasks.map((task) => (

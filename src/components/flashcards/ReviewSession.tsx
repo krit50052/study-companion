@@ -8,11 +8,11 @@ import type { Card, ReviewQuality } from '@/lib/types'
 
 function EmptyState({ deckId, message }: { deckId: string; message: string }) {
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
-      <p className="text-lg font-medium text-gray-900">{message}</p>
+    <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-900">
+      <p className="text-lg font-medium text-gray-900 dark:text-gray-100">{message}</p>
       <Link
         href={`/flashcards/${deckId}`}
-        className="mt-4 inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800"
+        className="mt-4 inline-block text-sm font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
       >
         Back to deck
       </Link>
@@ -43,7 +43,7 @@ export function ReviewSession({ cards, deckId }: { cards: Card[]; deckId: string
 
   return (
     <div>
-      <p className="mb-4 text-sm text-gray-500">
+      <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
         Card {currentIndex + 1} of {queue.length}
       </p>
       <ReviewCard

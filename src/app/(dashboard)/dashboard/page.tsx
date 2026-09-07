@@ -12,7 +12,7 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold text-gray-900">Dashboard</h1>
+      <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Dashboard</h1>
       <div className="mt-6 space-y-6">
         <StreakCounter current={current} longest={longest} />
         <ProgressChart data={chartData} />

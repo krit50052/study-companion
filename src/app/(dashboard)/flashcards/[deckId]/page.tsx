@@ -31,8 +31,8 @@ export default async function DeckPage({
     <div>
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-gray-900">{deck.name}</h1>
-          {deck.subject && <p className="mt-1 text-sm text-gray-500">{deck.subject}</p>}
+          <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{deck.name}</h1>
+          {deck.subject && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{deck.subject}</p>}
         </div>
         <Link
           href={`/flashcards/${deckId}/review`}

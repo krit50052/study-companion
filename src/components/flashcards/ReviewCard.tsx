@@ -18,13 +18,13 @@ interface ReviewCardProps {
 
 export function ReviewCard({ card, revealed, onReveal, onGrade }: ReviewCardProps) {
   return (
-    <div className="rounded-lg border border-gray-200 bg-white p-8 text-center">
-      <p className="text-lg font-medium text-gray-900">{card.front}</p>
+    <div className="rounded-lg border border-gray-200 bg-white p-8 text-center dark:border-gray-700 dark:bg-gray-900">
+      <p className="text-lg font-medium text-gray-900 dark:text-gray-100">{card.front}</p>
 
       {revealed ? (
         <>
-          <hr className="my-6 border-gray-200" />
-          <p className="text-lg text-gray-700">{card.back}</p>
+          <hr className="my-6 border-gray-200 dark:border-gray-700" />
+          <p className="text-lg text-gray-700 dark:text-gray-300">{card.back}</p>
           <div className="mt-8 grid grid-cols-2 gap-2 sm:grid-cols-4">
             {GRADE_BUTTONS.map((button) => (
               <button
