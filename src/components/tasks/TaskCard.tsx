@@ -48,7 +48,10 @@ export function TaskCard({ task }: { task: Task }) {
         {task.description && <p className="mt-1 text-sm text-gray-600">{task.description}</p>}
         {task.due_date && (
           <p className="mt-1 text-xs text-gray-400">
-            Due {new Date(task.due_date).toLocaleDateString()}
+            Due {(() => {
+              const [year, month, day] = task.due_date!.slice(0, 10).split('-')
+              return `${month}/${day}/${year}`
+            })()}
           </p>
         )}
       </div>
