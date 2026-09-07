@@ -20,6 +20,10 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    // localStorage/matchMedia are client-only, so the real theme can't be
+    // computed during SSR/first render — this effect is the earliest point
+    // it can be read.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(getInitialTheme())
     setMounted(true)
   }, [])

@@ -42,7 +42,7 @@ study-companion/
 │   │   ├── spaced-repetition.ts
 │   │   └── types.ts
 │   ├── hooks/{useTasks.ts,useDecks.ts,useUser.ts}
-│   └── middleware.ts
+│   └── proxy.ts
 ├── .env.local
 ```
 
@@ -328,11 +328,11 @@ export async function createClient() {
 ## Auth Setup
 
 ```ts
-// src/middleware.ts
+// src/proxy.ts
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
   const supabase = createServerClient(
