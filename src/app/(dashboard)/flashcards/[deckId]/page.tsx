@@ -29,14 +29,14 @@ export default async function DeckPage({
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">{deck.name}</h1>
           {deck.subject && <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">{deck.subject}</p>}
         </div>
         <Link
           href={`/flashcards/${deckId}/review`}
-          className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-500"
+          className="self-start rounded-md bg-indigo-600 px-3 py-2 text-sm font-medium text-white hover:bg-indigo-500 sm:self-auto"
         >
           Start review
         </Link>
