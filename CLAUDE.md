@@ -456,11 +456,21 @@ npm install @supabase/supabase-js @supabase/ssr recharts date-fns
 npm run test
 ```
 
+## Seeding Test Data
+```bash
+npm run seed
+```
+Signs in as `SEED_USER_EMAIL`/`SEED_USER_PASSWORD` (a test account you create yourself) and, through the normal Supabase client (RLS applies as usual, no service-role key needed), resets and reseeds that user's tasks/decks/cards/review_logs with realistic sample data — including a backdated streak history so the dashboard isn't all-zeros. Safe to rerun. See `scripts/seed.ts`.
+
 ## .env.local (fill from Supabase Dashboard → Project Settings → API)
 ```
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
+
+# Only needed for `npm run seed` — credentials of an existing test account
+SEED_USER_EMAIL=
+SEED_USER_PASSWORD=
 ```
 
 ## Not yet built
-- Seed data for testing
+(nothing outstanding)
